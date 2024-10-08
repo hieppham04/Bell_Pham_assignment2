@@ -1,10 +1,11 @@
 
+
 1) deleteSubsection
 - Pseudocode:
 function deleteSubsection(lower, upper):
-    if head is null:
+1;95;0c    if head is null:
         return // List is empty
-    
+
     leftRemoval = head
     rightRemoval = head
 
@@ -79,3 +80,23 @@ function swapAlternate():
 - Complexity:
     Time Complexity: O(n)
     Space Complexity: O(1)
+
+Running the code:
+
+    javac -d bin src/NodeType.java
+    javac -d bin -cp bin src/DoublyLinkedList.java
+    javac -d bin -cp bin src/DoublyLinkedListDriver.java
+    java -cp bin DoublyLinkedListDriver [Location of file to use]
+
+    OR
+
+    Use the compile_and_run.sh script to use int-input.txt as the argument
+
+Credit:
+    NodeType.java - Jackson Bell
+    DoublyLinkedList.java - Hiep Pham and Jackson Bell (Commenting and debugging)
+    DoublyLinkedListDriver - Jackson Bell and Hiep Pham (Debugging)
+
+Submission:
+    Jackson Bell - jrb57375@uga.edu
+    Hiep Pham - hhp48004@uga.edu

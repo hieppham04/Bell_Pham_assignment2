@@ -2,20 +2,28 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * Driver class for the Doubly Linked List Driver.
+ */
 public class DoublyLinkedListDriver {
 
+    /**
+     * Uses a scanner to get a number and insert it.
+     * @param <T> the type of the item
+     * @param list the list to insert in
+     * @param sc the scanner to use
+     * @param type the type of list
+     */
     private static <T extends Comparable<T>> void doInsert
-        (DoublyLinkedList<T> list, Scanner sc, String type) {
+    (DoublyLinkedList<T> list, Scanner sc, String type) {
         T item = null;
         if (type.compareTo("i") == 0) {
             System.out.print("Enter a number to insert: ");
             item = (T) (Integer) sc.nextInt();
-        }
-        else if (type.compareTo("d") == 0) {
+        } else if (type.compareTo("d") == 0) {
             System.out.print("Enter a number to insert: ");
             item = (T) (Double) sc.nextDouble();
-        }
-        else if (type.compareTo("s") == 0) {
+        } else if (type.compareTo("s") == 0) {
             System.out.print("Enter a string to insert: ");
             item = (T) sc.next();
         }
@@ -24,39 +32,68 @@ public class DoublyLinkedListDriver {
         list.printReverse();
     }
 
+    /**
+     * Deletes an item from the user.
+     * @param <T> the type of the item
+     * @param list the list to delete from
+     * @param sc the scanner to use
+     * @param type the type of the list
+     */
     private static <T extends Comparable<T>> void doDelete
-        (DoublyLinkedList<T> list, Scanner sc, String type) {
+    (DoublyLinkedList<T> list, Scanner sc, String type) {
         T item = null;
+
         if (type.compareTo("i") == 0) {
             System.out.print("Enter a number to delete: ");
             item = (T) (Integer) sc.nextInt();
-        }
-        else if (type.compareTo("d") == 0) {
+        } else if (type.compareTo("d") == 0) {
             System.out.print("Enter a number to delete: ");
             item = (T) (Double) sc.nextDouble();
-        }
-        else if (type.compareTo("s") == 0) {
+        } else if (type.compareTo("s") == 0) {
             System.out.print("Enter a string to delete: ");
             item = (T) sc.next();
         }
         list.deleteItem(item);
+
     }
 
+    /**
+     * Prints the list.
+     * @param <T> the type of the item
+     * @param list the list to print
+     */
     private static <T extends Comparable<T>> void doPrint(DoublyLinkedList<T> list) {
         list.print();
     }
 
+    /**
+     * Prints the reverse of the list.
+     * @param <T> the type of the items
+     * @param list the list to print the reverse of
+     */
     private static <T extends Comparable<T>> void doPrintReverse(DoublyLinkedList<T> list) {
         list.printReverse();
     }
 
+    /**
+     * Prints the length of the list.
+     * @param <T> the type of the items
+     * @param list the list to get the length of
+     */
     private static <T extends Comparable<T>> void doLength(DoublyLinkedList<T> list) {
         int len = list.length();
         System.out.println("The length of the list is " + len);
     }
 
+    /**
+     * Deletes a subsection of the list.
+     * @param <T> the type of the items
+     * @param list the list to do the deletion on
+     * @param sc the scanner to use for input
+     * @param type the type of the list
+     */
     private static <T extends Comparable<T>> void doDeleteSubsection
-        (DoublyLinkedList<T> list, Scanner sc, String type) {
+    (DoublyLinkedList<T> list, Scanner sc, String type) {
         T lower = null;
         T upper = null;
         if (type.compareTo("i") == 0) {
@@ -64,14 +101,12 @@ public class DoublyLinkedListDriver {
             lower = (T) (Integer) sc.nextInt();
             System.out.print("Enter upper bound: ");
             upper = (T) (Integer) sc.nextInt();
-        }
-        else if (type.compareTo("d") == 0) {
+        } else if (type.compareTo("d") == 0) {
             System.out.print("Enter lower bound: ");
             lower = (T) (Double) sc.nextDouble();
             System.out.print("Enter upper bound: ");
             upper = (T) (Double) sc.nextDouble();
-        }
-        else if (type.compareTo("s") == 0) {
+        } else if (type.compareTo("s") == 0) {
             System.out.print("Enter lower bound: ");
             lower = (T) sc.next();
             System.out.print("Enter upper bound: ");
@@ -82,18 +117,32 @@ public class DoublyLinkedListDriver {
         list.printList("Modified list: ");
     }
 
+    /**
+     * Prints the input list and reversed list.
+     * @param <T> the type of the items
+     * @param list the list to do the prints for
+     */
     private static <T extends Comparable<T>> void doReverseList(DoublyLinkedList<T> list) {
         list.printList("Input list: ");
         list.reverseList();
         list.printList("Reversed list: ");
     }
 
+    /**
+     * Swaps the alternates and prints.
+     * @param <T> the type of the itmes
+     * @param list the list to do the prints for
+     */
     private static <T extends Comparable<T>> void doSwapAlternate(DoublyLinkedList<T> list) {
         list.printList("Original list: ");
         list.swapAlternate();
         list.printList("Swapped list: ");
     }
 
+    /**
+     * The main method.
+     * @param args the path to the text file to start the list
+     */
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Please provide a file name as an argument.");
@@ -139,6 +188,18 @@ public class DoublyLinkedListDriver {
             return;
         }
 
+
+        printCommands();
+        doCommands(commandInput, list, type);
+    }
+
+    /**
+     * Gets the command input from the user.
+     * @param commandInput the scanner to use
+     * @param list the list being used
+     * @param type the type of the items
+     */
+    private static void doCommands(Scanner commandInput, DoublyLinkedList list, String type) {
         System.out.print("Enter a command: ");
         String command = commandInput.next();
         while (command.compareTo("q") != 0) {
@@ -165,6 +226,20 @@ public class DoublyLinkedListDriver {
             command = commandInput.next();
         }
         System.out.println("Exiting the program...");
+    }
 
+    /**
+     * Prints the comand options.
+     */
+    private static void printCommands() {
+        System.out.println("Commands:\n" +
+            "(i) - Insert value\n" +
+            "(d) - Delete value\n" +
+            "(p) - Print list\n" +
+            "(l) - Length\n" +
+            "(t) - Print reverse\n" +
+            "(b) - Delete subsection\n" +
+            "(s) - Swap alternate\n" +
+            "(q) - Quit program");
     }
 }
