@@ -115,6 +115,9 @@ public class DoublyLinkedListDriver {
         list.printList("Original list: ");
         list.deleteSubsection(lower, upper);
         list.printList("Modified list: ");
+        if (list.length() != 0) {
+            doPrintReverse(list);
+        }
     }
 
     /**
@@ -238,6 +241,7 @@ public class DoublyLinkedListDriver {
             "(p) - Print list\n" +
             "(l) - Length\n" +
             "(t) - Print reverse\n" +
+            "(r) - Reverse list\n" +
             "(b) - Delete subsection\n" +
             "(s) - Swap alternate\n" +
             "(q) - Quit program");

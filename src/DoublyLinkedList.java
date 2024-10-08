@@ -22,17 +22,15 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         } else {
             NodeType<T> current = head;
             while (current.next != null
-                && current.info.compareTo(item) <= -1) {
+                && current.info.compareTo(item) < 0) {
                 current = current.next;
             }
-            if (current.info.compareTo(item) <= -1) {
-                System.out.println(current.info + " is less than " + item + "\n" + current.info.compareTo(item));
+            if (current.info.compareTo(item) < 0) {
                 current.next = newNode;
                 newNode.back = current;
             } else if (current.info.compareTo(item) == 0) {
                 System.out.println("Item already exists");
             } else {
-                System.out.println(current.info + " is more than " + item + "\n" + current.info.compareTo(item));
                 if (current.back != null) {
                     current.back.next = newNode;
                 } else {
@@ -55,7 +53,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         } else {
             NodeType<T> current = head;
             while (current != null
-                && current.info.compareTo(item) == -1) {
+                && current.info.compareTo(item) < 0) {
                 current = current.next;
             }
             if (current == null || current.info.compareTo(item) != 0) {
