@@ -22,10 +22,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         } else {
             NodeType<T> current = head;
             while (current.next != null
-                && current.info.compareTo(item) == -1) {
+                && current.info.compareTo(item) <= -1) {
                 current = current.next;
             }
-            if (current.info.compareTo(item) == -1) {
+            if (current.info.compareTo(item) <= -1) {
                 System.out.println(current.info + " is less than " + item + "\n" + current.info.compareTo(item));
                 current.next = newNode;
                 newNode.back = current;
